@@ -29,6 +29,11 @@
   <img src="banner.png">
 </div>
 
+## Features
+
+- [x] Generate full CRUD component (list, count, create, get, patch, put & delete)
+- [ ] Auto register the new created component to express routes
+
 ## Install
 
 Make sure `yeoman` is installed
