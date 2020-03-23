@@ -74,10 +74,21 @@ const get = (req: Request, res: Response) => {
   res.send(req[NAME]);
 };
 
+const patch = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    // TODO: patch object
+    const object = { ...req[NAME], ...{} };
+
+    res.send(object);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const update = async (req: Request, res: Response, next: NextFunction) => {
   try {
     // TODO: update object
-    const object = req[NAME];
+    const object = {};
 
     res.send(object);
   } catch (err) {
@@ -96,4 +107,4 @@ const del = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export { list, create, count, getById, get, update, del };
+export { list, create, count, getById, get, patch, update, del };

@@ -1,6 +1,7 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const changeCase = require('change-case');
 const pluralize = require('pluralize');
 
 const pkg = require('../../package.json');
@@ -19,9 +20,18 @@ module.exports = class extends Generator {
     ];
 
     return this.prompt(prompts).then(props => {
+      const elementComponentNameParamCase = changeCase.paramCase(
+        props.elementComponentName,
+      );
+      const elementComponentNameCamelCase = changeCase.camelCase(
+        props.elementComponentName,
+      );
+
       this.props = {
         ...props,
-        elementComponentPluralName: pluralize(props.elementComponentName),
+        elementResourceName: elementComponentNameParamCase,
+        elementResourceNamePlural: pluralize(elementComponentNameParamCase),
+        elementDirName: pluralize(elementComponentNameCamelCase),
       };
     });
   }

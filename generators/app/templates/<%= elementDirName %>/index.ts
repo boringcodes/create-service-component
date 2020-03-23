@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 import { Routes } from '../types';
 import { PLURAL_NAME } from './constants';
-import { list, count, create, getById, get, update, del } from './controller';
+import { list, count, create, getById, get, patch, update, del } from './controller';
 
 const path = `/${PLURAL_NAME}`;
 
@@ -23,6 +23,7 @@ const routes = (_: Routes) => {
   router
     .route('/:id')
     .get(get)
+    .patch(patch)
     .put(update)
     .delete(del);
 

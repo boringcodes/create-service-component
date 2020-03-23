@@ -24,6 +24,7 @@
   ],
   "dependencies": {
     "chalk": "^3.0.0",
+    "change-case": "^4.1.1",
     "pluralize": "^8.0.0",
     "yeoman-generator": "^4.5.0",
     "yosay": "^2.0.2"
