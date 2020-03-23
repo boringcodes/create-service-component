@@ -1,46 +1,68 @@
 <div align="center">
-  <h1>repo-template</h1>
-  <p>Boring GitHub Repository Template</p>
-  
-  <div>
-    <a href="https://github.com/boringcodes/repo-template/commits" aria-label="Commitizen Friendly">
+  <h1>create-service-component</h1>
+  <p>Boring Express Microservice Component Generator</p>
+
+  <p>
+    <a href="https://github.com/boringcodes/create-service-component/commits" aria-label="Commitizen Friendly">
       <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square">
     </a>
-    <a href="https://github.com/boringcodes/repo-template/actions" aria-label="GitHub Workflow Status">
-      <img src="https://img.shields.io/github/workflow/status/boringcodes/repo-template/main-workflow?style=flat-square">
+    <a href="https://github.com/boringcodes/create-service-component/actions" aria-label="GitHub Workflow Status">
+      <img src="https://img.shields.io/github/workflow/status/boringcodes/create-service-component/publish-npm?style=flat-square">
     </a>
-    <a href="https://david-dm.org/boringcodes/repo-template" aria-label="Dependencies Status">
-      <img src="https://img.shields.io/david/boringcodes/repo-template?style=flat-square">
+    <a href="https://david-dm.org/boringcodes/create-service-component" aria-label="Dependencies Status">
+      <img src="https://img.shields.io/david/boringcodes/create-service-component?style=flat-square">
     </a>
-    <a href="https://www.npmjs.com/package/@boringcodes/repo-template" aria-label="NPM Version">
-      <img src="https://img.shields.io/npm/v/@boringcodes/repo-template?color=brightgreen&style=flat-square">
+    <a href="https://www.npmjs.com/package/generator-create-service-component" aria-label="NPM Version">
+      <img src="https://img.shields.io/npm/v/generator-create-service-component?color=brightgreen&style=flat-square">
     </a>
-    <a href="https://www.npmjs.com/package/@boringcodes/repo-template" aria-label="NPM Downloads">
-      <img src="https://img.shields.io/npm/dm/@boringcodes/repo-template?style=flat-square">
+    <a href="https://www.npmjs.com/package/generator-create-service-component" aria-label="NPM Downloads">
+      <img src="https://img.shields.io/npm/dm/generator-create-service-component?style=flat-square">
     </a>
-    <a href="https://github.com/boringcodes/repo-template/blob/master/LICENSE" aria-label="MIT License">
-      <img src="https://img.shields.io/github/license/boringcodes/repo-template?color=brightgreen&style=flat-square">
+    <a href="https://github.com/boringcodes/create-service-component/blob/master/LICENSE" aria-label="MIT License">
+      <img src="https://img.shields.io/github/license/boringcodes/create-service-component?color=brightgreen&style=flat-square">
     </a>
     <a href="https://github.com/boringcodes" aria-label="BoringCodes Verified">
       <img src="https://img.shields.io/badge/boringcodes-verified-brightgreen?style=flat-square">
     </a>
-  </div>
+  </p>
+
+  <img src="banner.png">
 </div>
 
-## Installation
+## Install
 
-Use the package manager to install foobar.
+Make sure `yeoman` is installed
 
-```bash
-yarn install
+```sh
+$ yarn global add yo
+```
+
+Then install the generator
+
+```sh
+$ yarn global add generator-create-service-component
 ```
 
 ## Usage
 
-```javascript
-import foobar from 'foobar';
+Navigate to the created service root dir (using [@boringcodes/create-service](https://github.com/boringcodes/create-service)) and run the following command to generate new component
 
-foobar.start();
+```sh
+$ yo create-service-component
+```
+
+This scaffolds out:
+
+```
+├── src
+│   ├── components
+│   │   ├── componentNames
+│   │   │   ├── constants.ts
+│   │   │   ├── controller.ts
+│   │   │   ├── index.ts
+│   │   └── ...
+│   ├── ...
+├── ...
 ```
 
 ## Contributing
@@ -55,4 +77,4 @@ Please make sure to update tests as appropriate.
 
 ## License
 
-[MIT](https://github.com/boringcodes/repo-template/blob/master/LICENSE)
+[MIT](https://github.com/boringcodes/create-service-component/blob/master/LICENSE)
