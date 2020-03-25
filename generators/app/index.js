@@ -19,7 +19,7 @@ module.exports = class extends Generator {
       },
     ];
 
-    return this.prompt(prompts).then(props => {
+    return this.prompt(prompts).then((props) => {
       const elementComponentNameParamCase = changeCase.paramCase(
         props.elementComponentName,
       );
