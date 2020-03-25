@@ -6,6 +6,9 @@
     <a href="https://github.com/boringcodes/create-service-component/commits" aria-label="Commitizen Friendly">
       <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square">
     </a>
+    <a href="https://github.com/boringcodes/create-service-component" aria-label="Prettier Code Style">
+      <img src="https://img.shields.io/badge/code_style-prettier-brightgreen?style=flat-square">
+    </a>
     <a href="https://github.com/boringcodes/create-service-component/actions" aria-label="GitHub Workflow Status">
       <img src="https://img.shields.io/github/workflow/status/boringcodes/create-service-component/publish-npm?style=flat-square">
     </a>
