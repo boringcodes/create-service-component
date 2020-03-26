@@ -1,6 +1,6 @@
 {
   "name": "generator-create-service-component",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Boring Express Microservice Component Generator",
   "homepage": "https://github.com/boringcodes/create-service-component",
   "bugs": "https://github.com/boringcodes/create-service-component/issues",
