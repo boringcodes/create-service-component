@@ -34,10 +34,10 @@ const count = async (_: Request, res: Response, next: NextFunction) => {
   }
 };
 
-const create = async (_: Request, res: Response, next: NextFunction) => {
+const create = async (req: Request, res: Response, next: NextFunction) => {
   try {
     // TODO: create object
-    const object = {};
+    const object = req.body;
 
     res.send(object);
   } catch (err) {
@@ -77,7 +77,7 @@ const get = (req: Request, res: Response) => {
 const patch = async (req: Request, res: Response, next: NextFunction) => {
   try {
     // TODO: patch object
-    const object = { ...req[NAME], ...{} };
+    const object = { ...req[NAME], ...req.body };
 
     res.send(object);
   } catch (err) {
@@ -88,7 +88,7 @@ const patch = async (req: Request, res: Response, next: NextFunction) => {
 const update = async (req: Request, res: Response, next: NextFunction) => {
   try {
     // TODO: update object
-    const object = {};
+    const object = req.body;
 
     res.send(object);
   } catch (err) {
