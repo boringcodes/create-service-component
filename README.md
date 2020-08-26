@@ -64,7 +64,7 @@ This scaffolds out:
 ```
 ├── src
 │   ├── components
-│   │   ├── componentNames
+│   │   ├── component-names
 │   │   │   ├── constants.ts
 │   │   │   ├── controller.ts
 │   │   │   ├── index.ts
