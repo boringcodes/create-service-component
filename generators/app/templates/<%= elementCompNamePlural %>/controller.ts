@@ -1,4 +1,4 @@
-import { Request as ExpressRequest, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import {
   BAD_REQUEST,
   NOT_FOUND,
@@ -6,29 +6,18 @@ import {
 } from 'http-status-codes';
 import { HttpError } from '@boringcodes/utils/error';
 
-import { NAME } from './constants';
+import { ENTITY } from './constants';
 
-interface Request extends ExpressRequest {
-  readonly [NAME]: any;
+interface MyRequest extends Request {
+  readonly [ENTITY]: any;
 }
 
 const list = async (_: Request, res: Response, next: NextFunction) => {
   try {
     // TODO: list objects
-    const objects = [];
+    const objects: any[] = [];
 
     res.send(objects);
-  } catch (err) {
-    next(new HttpError(err.code || INTERNAL_SERVER_ERROR, err));
-  }
-};
-
-const count = async (_: Request, res: Response, next: NextFunction) => {
-  try {
-    // TODO: count objects
-    const count = 0;
-
-    res.send({ count });
   } catch (err) {
     next(new HttpError(err.code || INTERNAL_SERVER_ERROR, err));
   }
@@ -46,23 +35,17 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const getById = async (req: Request, _: Response, next: NextFunction) => {
-  if (!req.params.id) {
-    next(new HttpError(BAD_REQUEST, 'Invalid resource Id'));
-
-    return;
-  }
-
   try {
-    // TODO: get object
-    const object = {};
-
-    if (!object) {
-      next(new HttpError(NOT_FOUND, 'Resource not found'));
-
-      return;
+    if (!req.params.id) {
+      throw new HttpError(BAD_REQUEST, 'Invalid resource Id');
     }
-    // tslint:disable-next-line:no-object-mutation
-    Object.assign(req, { [NAME]: object });
+
+    // TODO: get object by id
+    const object = {};
+    if (!object) {
+      return next(new HttpError(NOT_FOUND, 'Resource not found'));
+    }
+    Object.assign(req, { [ENTITY]: object });
 
     next();
   } catch (err) {
@@ -70,36 +53,23 @@ const getById = async (req: Request, _: Response, next: NextFunction) => {
   }
 };
 
-const get = (req: Request, res: Response) => {
-  res.send(req[NAME]);
-};
-
-const patch = async (req: Request, res: Response, next: NextFunction) => {
+const get = (req: Request, res: Response, next: NextFunction) => {
   try {
-    // TODO: patch object
-    const object = { ...req[NAME], ...req.body };
-
-    res.send(object);
+    // TODO: get object
+    res.send((req as MyRequest)[ENTITY]);
   } catch (err) {
-    next(err);
+    next(new HttpError(err.code || INTERNAL_SERVER_ERROR, err));
   }
 };
 
-const update = async (req: Request, res: Response, next: NextFunction) => {
+const updatePartial = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
-    // TODO: update object
-    const object = req.body;
-
-    res.send(object);
-  } catch (err) {
-    next(err);
-  }
-};
-
-const del = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    // TODO: delete object
-    const object = req[NAME];
+    // TODO: update partial object
+    const object = { ...(req as MyRequest)[ENTITY], ...req.body };
 
     res.send(object);
   } catch (err) {
@@ -107,4 +77,26 @@ const del = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export { list, create, count, getById, get, patch, update, del };
+const update = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    // TODO: replace object
+    const object = req.body;
+
+    res.send(object);
+  } catch (err) {
+    next(new HttpError(err.code || INTERNAL_SERVER_ERROR, err));
+  }
+};
+
+const del = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    // TODO: delete object
+    const object = (req as MyRequest)[ENTITY];
+
+    res.send(object);
+  } catch (err) {
+    next(new HttpError(err.code || INTERNAL_SERVER_ERROR, err));
+  }
+};
+
+export { list, create, getById, get, updatePartial, update, del };

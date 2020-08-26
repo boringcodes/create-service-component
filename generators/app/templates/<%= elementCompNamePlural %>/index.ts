@@ -1,30 +1,27 @@
 import { Router } from 'express';
 
-import { Routes } from '../types';
-import { PLURAL_NAME } from './constants';
+import { RouteOptions } from '..';
+import { RESOURCE } from './constants';
 import {
   list,
-  count,
   create,
   getById,
   get,
-  patch,
+  updatePartial,
   update,
   del,
 } from './controller';
 
-const path = `/${PLURAL_NAME}`;
+const path = `/${RESOURCE}`;
 
-const routes = (_: Routes) => {
+const routes = (_: RouteOptions) => {
   const router = Router();
 
   router.param('id', getById);
 
   router.route('/').get(list).post(create);
 
-  router.route('/count').get(count);
-
-  router.route('/:id').get(get).patch(patch).put(update).delete(del);
+  router.route('/:id').get(get).patch(updatePartial).put(update).delete(del);
 
   return router;
 };

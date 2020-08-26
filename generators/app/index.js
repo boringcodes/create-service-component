@@ -20,18 +20,14 @@ module.exports = class extends Generator {
     ];
 
     return this.prompt(prompts).then((props) => {
-      const elementComponentNameParamCase = changeCase.paramCase(
-        props.elementComponentName,
-      );
-      const elementComponentNameCamelCase = changeCase.camelCase(
+      const elementCompNameParamCase = changeCase.paramCase(
         props.elementComponentName,
       );
 
       this.props = {
         ...props,
-        elementResourceName: elementComponentNameParamCase,
-        elementResourceNamePlural: pluralize(elementComponentNameParamCase),
-        elementDirName: pluralize(elementComponentNameCamelCase),
+        elementCompNameSingular: elementCompNameParamCase,
+        elementCompNamePlural: pluralize(elementCompNameParamCase),
       };
     });
   }
