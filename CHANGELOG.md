@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/boringcodes/create-service-component/compare/v1.1.1...v1.2.0) (2020-08-26)
+
+
+### Features
+
+* **generators:** simplify generator props using singular & plural comp name; replace NAME & PLURAL_NAME consts with ENTITY & RESOURCE; remove count api & rename patch api to updatePartial; refactor controller ([55d6b70](https://github.com/boringcodes/create-service-component/commit/55d6b700df9ca5e21e495c71782df8aa7c890868))
+
 ### [1.1.1](https://github.com/boringcodes/create-service-component/compare/v1.1.0...v1.1.1) (2020-03-28)
 
 ## [1.1.0](https://github.com/boringcodes/create-service-component/compare/v1.0.0...v1.1.0) (2020-03-26)
