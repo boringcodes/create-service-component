@@ -34,7 +34,7 @@
 
 ## Features
 
-- [x] Generate full CRUD component (list, count, create, get, patch, put & delete)
+- [x] Generate full CRUD component (list, create, get, updatePartial, update & delete)
 - [ ] Auto register the new created component to express routes
 
 ## Install
@@ -53,7 +53,7 @@ $ yarn global add generator-create-service-component
 
 ## Usage
 
-Navigate to the created service root dir (using [@boringcodes/create-service](https://github.com/boringcodes/create-service)) and run the following command to generate new component
+Navigate to the created service (using [@boringcodes/create-service](https://github.com/boringcodes/create-service)) root dir and run the following command to generate new component
 
 ```sh
 $ yo create-service-component
