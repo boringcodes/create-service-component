@@ -1,9 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import {
-  BAD_REQUEST,
-  NOT_FOUND,
-  INTERNAL_SERVER_ERROR,
-} from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes';
 import { HttpError } from '@boringcodes/utils/error';
 
 import { ENTITY } from './constants';
@@ -19,7 +15,7 @@ const list = async (_: Request, res: Response, next: NextFunction) => {
 
     res.send(objects);
   } catch (err) {
-    next(new HttpError(err.code || INTERNAL_SERVER_ERROR, err));
+    next(new HttpError(err.code || StatusCodes.INTERNAL_SERVER_ERROR, err));
   }
 };
 
@@ -30,26 +26,26 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 
     res.send(object);
   } catch (err) {
-    next(new HttpError(err.code || INTERNAL_SERVER_ERROR, err));
+    next(new HttpError(err.code || StatusCodes.INTERNAL_SERVER_ERROR, err));
   }
 };
 
 const getById = async (req: Request, _: Response, next: NextFunction) => {
   try {
     if (!req.params.id) {
-      throw new HttpError(BAD_REQUEST, 'Invalid resource Id');
+      throw new HttpError(StatusCodes.BAD_REQUEST, 'Invalid resource Id');
     }
 
     // TODO: get object by id
     const object = {};
     if (!object) {
-      return next(new HttpError(NOT_FOUND, 'Resource not found'));
+      return next(new HttpError(StatusCodes.NOT_FOUND, 'Resource not found'));
     }
     Object.assign(req, { [ENTITY]: object });
 
     next();
   } catch (err) {
-    next(new HttpError(err.code || INTERNAL_SERVER_ERROR, err));
+    next(new HttpError(err.code || StatusCodes.INTERNAL_SERVER_ERROR, err));
   }
 };
 
@@ -58,7 +54,7 @@ const get = (req: Request, res: Response, next: NextFunction) => {
     // TODO: get object
     res.send((req as MyRequest)[ENTITY]);
   } catch (err) {
-    next(new HttpError(err.code || INTERNAL_SERVER_ERROR, err));
+    next(new HttpError(err.code || StatusCodes.INTERNAL_SERVER_ERROR, err));
   }
 };
 
@@ -73,7 +69,7 @@ const updatePartial = async (
 
     res.send(object);
   } catch (err) {
-    next(new HttpError(err.code || INTERNAL_SERVER_ERROR, err));
+    next(new HttpError(err.code || StatusCodes.INTERNAL_SERVER_ERROR, err));
   }
 };
 
@@ -84,7 +80,7 @@ const update = async (req: Request, res: Response, next: NextFunction) => {
 
     res.send(object);
   } catch (err) {
-    next(new HttpError(err.code || INTERNAL_SERVER_ERROR, err));
+    next(new HttpError(err.code || StatusCodes.INTERNAL_SERVER_ERROR, err));
   }
 };
 
@@ -95,7 +91,7 @@ const del = async (req: Request, res: Response, next: NextFunction) => {
 
     res.send(object);
   } catch (err) {
-    next(new HttpError(err.code || INTERNAL_SERVER_ERROR, err));
+    next(new HttpError(err.code || StatusCodes.INTERNAL_SERVER_ERROR, err));
   }
 };
 
