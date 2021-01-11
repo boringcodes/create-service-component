@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/boringcodes/create-service-component/compare/v1.2.0...v1.3.0) (2021-01-11)
+
+
+### Features
+
+* **templates:** update http-status-codes import ([371a224](https://github.com/boringcodes/create-service-component/commit/371a2244bc857371b16804d7cf9d563c672cf1e7))
+
 ## [1.2.0](https://github.com/boringcodes/create-service-component/compare/v1.1.1...v1.2.0) (2020-08-26)
 
 
