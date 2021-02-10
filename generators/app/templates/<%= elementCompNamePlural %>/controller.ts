@@ -8,90 +8,86 @@ interface MyRequest extends Request {
   readonly [ENTITY]: any;
 }
 
-const list = async (_: Request, res: Response, next: NextFunction) => {
+const list = (_: Request, res: Response, next: NextFunction): void => {
   try {
     // TODO: list objects
     const objects: any[] = [];
 
     res.send(objects);
   } catch (err) {
-    next(new HttpError(err.code || StatusCodes.INTERNAL_SERVER_ERROR, err));
+    next(new HttpError(err.code ?? StatusCodes.INTERNAL_SERVER_ERROR, err));
   }
 };
 
-const create = async (req: Request, res: Response, next: NextFunction) => {
+const create = (req: Request, res: Response, next: NextFunction): void => {
   try {
     // TODO: create object
-    const object = req.body;
+    const object = { ...req.body };
 
     res.send(object);
   } catch (err) {
-    next(new HttpError(err.code || StatusCodes.INTERNAL_SERVER_ERROR, err));
+    next(new HttpError(err.code ?? StatusCodes.INTERNAL_SERVER_ERROR, err));
   }
 };
 
-const getById = async (req: Request, _: Response, next: NextFunction) => {
+const getById = (req: Request, _: Response, next: NextFunction): void => {
   try {
-    if (!req.params.id) {
+    const { id = '' } = req.params;
+    if (id === '') {
       throw new HttpError(StatusCodes.BAD_REQUEST, 'Invalid resource Id');
     }
 
     // TODO: get object by id
     const object = {};
-    if (!object) {
-      return next(new HttpError(StatusCodes.NOT_FOUND, 'Resource not found'));
-    }
     Object.assign(req, { [ENTITY]: object });
 
     next();
   } catch (err) {
-    next(new HttpError(err.code || StatusCodes.INTERNAL_SERVER_ERROR, err));
+    next(new HttpError(err.code ?? StatusCodes.INTERNAL_SERVER_ERROR, err));
   }
 };
 
-const get = (req: Request, res: Response, next: NextFunction) => {
+const get = (req: Request, res: Response, next: NextFunction): void => {
   try {
     // TODO: get object
     res.send((req as MyRequest)[ENTITY]);
   } catch (err) {
-    next(new HttpError(err.code || StatusCodes.INTERNAL_SERVER_ERROR, err));
+    next(new HttpError(err.code ?? StatusCodes.INTERNAL_SERVER_ERROR, err));
   }
 };
 
-const updatePartial = async (
+const updatePartial = (
   req: Request,
   res: Response,
   next: NextFunction,
-) => {
+): void => {
   try {
     // TODO: update partial object
     const object = { ...(req as MyRequest)[ENTITY], ...req.body };
 
     res.send(object);
   } catch (err) {
-    next(new HttpError(err.code || StatusCodes.INTERNAL_SERVER_ERROR, err));
+    next(new HttpError(err.code ?? StatusCodes.INTERNAL_SERVER_ERROR, err));
   }
 };
 
-const update = async (req: Request, res: Response, next: NextFunction) => {
+const update = (req: Request, res: Response, next: NextFunction): void => {
   try {
     // TODO: replace object
-    const object = req.body;
+    const object = { ...req.body };
 
     res.send(object);
   } catch (err) {
-    next(new HttpError(err.code || StatusCodes.INTERNAL_SERVER_ERROR, err));
+    next(new HttpError(err.code ?? StatusCodes.INTERNAL_SERVER_ERROR, err));
   }
 };
 
-const del = async (req: Request, res: Response, next: NextFunction) => {
+const del = (req: Request, res: Response, next: NextFunction): void => {
   try {
     // TODO: delete object
-    const object = (req as MyRequest)[ENTITY];
-
-    res.send(object);
+    res.send((req as MyRequest)[ENTITY]);
   } catch (err) {
-    next(new HttpError(err.code || StatusCodes.INTERNAL_SERVER_ERROR, err));
+    next(new HttpError(err.code ?? StatusCodes.INTERNAL_SERVER_ERROR, err));
   }
 };
 
