@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/boringcodes/create-service-component/compare/v1.3.1...v1.4.0) (2021-02-10)
+
+### Features
+
+- **lint-staged:** update glob pattern to ignore /templates dir ([ffc2b4b](https://github.com/boringcodes/create-service-component/commit/ffc2b4b46f72c3588f3e605094eeb62eb60dc2d6))
+
+### Bug Fixes
+
+- **templates:** eslint errors ([09d6c16](https://github.com/boringcodes/create-service-component/commit/09d6c16917c1cffbc3a8c77089ca655fc3816528))
+
 ### [1.3.1](https://github.com/boringcodes/create-service-component/compare/v1.3.0...v1.3.1) (2021-01-11)
 
 ## [1.3.0](https://github.com/boringcodes/create-service-component/compare/v1.2.0...v1.3.0) (2021-01-11)
