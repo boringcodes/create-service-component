@@ -1,9 +1,10 @@
-import mongoose, {
+import {
   Schema,
   Document as MongooseDocument,
   Model as MongooseModel,
 } from 'mongoose';
 
+import mongo from '../../db/mongo';
 import { <%= compNamePascalCase %> } from './types';
 import { ENTITY } from './constants';
 
@@ -12,7 +13,8 @@ interface Model extends MongooseModel<Document> {}
 
 const schema = new Schema<Document>({
   name: String,
+  // TODO: add more fields here
 });
 
-export default mongoose.model<Document, Model>(ENTITY, schema);
+export default mongo.createModel<Document, Model>(ENTITY, schema);
 export { Model, Document };

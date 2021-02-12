@@ -3,15 +3,6 @@ import { MyError } from '@boringcodes/utils/error';
 import { <%= compNamePascalCase %> } from './types';
 import Model, { Document } from './model';
 
-const transform = (document: Document): <%= compNamePascalCase %> => {
-  const { _id, ...restObject } = document.toObject({
-    virtuals: true,
-    versionKey: false,
-  });
-
-  return restObject;
-};
-
 const list = async (): Promise<<%= compNamePascalCase %>[]> => {
   // list documents
   const documents = await Model.find();
@@ -76,6 +67,16 @@ const del = async (id: string): Promise<<%= compNamePascalCase %>> => {
   await Model.deleteOne({ _id: id }).exec();
 
   return transform(document);
+};
+
+// transform document to json object
+const transform = (document: Document): <%= compNamePascalCase %> => {
+  const { _id, ...restObject } = document.toObject({
+    virtuals: true,
+    versionKey: false,
+  });
+
+  return restObject;
 };
 
 export default { list, create, get, updatePartial, update, del };

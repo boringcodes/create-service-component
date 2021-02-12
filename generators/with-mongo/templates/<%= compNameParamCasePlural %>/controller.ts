@@ -24,6 +24,8 @@ const getById = async (
     try {
       // get object by id
       const object = await repository.get(id);
+
+      // assign object to request for using in the next handlers
       Object.assign(req, { [ENTITY]: object });
 
       next();
