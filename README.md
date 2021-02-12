@@ -57,6 +57,9 @@ Navigate to the created service (using [@boringcodes/create-service](https://git
 
 ```sh
 $ yo create-service-component
+
+# or with mongo
+$ yo create-service-component:with-mongo
 ```
 
 This scaffolds out:
@@ -68,6 +71,9 @@ This scaffolds out:
 │   │   │   ├── constants.ts
 │   │   │   ├── controller.ts
 │   │   │   ├── index.ts
+│   │   │   ├── model.ts        (:with-mongo)
+│   │   │   ├── repository.ts   (:with-mongo)
+│   │   │   ├── types.ts
 │   │   └── ...
 │   ├── ...
 ├── ...
