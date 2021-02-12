@@ -2,33 +2,12 @@ import { Request, Response, NextFunction } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { HttpError } from '@boringcodes/utils/error';
 
+import { <%= compNamePascalCase %> } from './types';
 import { ENTITY } from './constants';
 
 interface MyRequest extends Request {
-  readonly [ENTITY]: any;
+  readonly [ENTITY]: Required<<%= compNamePascalCase %>>;
 }
-
-const list = (_: Request, res: Response, next: NextFunction): void => {
-  try {
-    // TODO: list objects
-    const objects: any[] = [];
-
-    res.send(objects);
-  } catch (err) {
-    next(new HttpError(err.code ?? StatusCodes.INTERNAL_SERVER_ERROR, err));
-  }
-};
-
-const create = (req: Request, res: Response, next: NextFunction): void => {
-  try {
-    // TODO: create object
-    const object = { ...req.body };
-
-    res.send(object);
-  } catch (err) {
-    next(new HttpError(err.code ?? StatusCodes.INTERNAL_SERVER_ERROR, err));
-  }
-};
 
 const getById = (req: Request, _: Response, next: NextFunction): void => {
   try {
@@ -42,6 +21,28 @@ const getById = (req: Request, _: Response, next: NextFunction): void => {
     Object.assign(req, { [ENTITY]: object });
 
     next();
+  } catch (err) {
+    next(new HttpError(err.code ?? StatusCodes.INTERNAL_SERVER_ERROR, err));
+  }
+};
+
+const list = (_: Request, res: Response, next: NextFunction): void => {
+  try {
+    // TODO: list objects
+    const objects: <%= compNamePascalCase %>[] = [];
+
+    res.send(objects);
+  } catch (err) {
+    next(new HttpError(err.code ?? StatusCodes.INTERNAL_SERVER_ERROR, err));
+  }
+};
+
+const create = (req: Request, res: Response, next: NextFunction): void => {
+  try {
+    // TODO: create object
+    const object = { ...req.body };
+
+    res.send(object);
   } catch (err) {
     next(new HttpError(err.code ?? StatusCodes.INTERNAL_SERVER_ERROR, err));
   }
@@ -73,7 +74,7 @@ const updatePartial = (
 
 const update = (req: Request, res: Response, next: NextFunction): void => {
   try {
-    // TODO: replace object
+    // TODO: update object
     const object = { ...req.body };
 
     res.send(object);
@@ -91,4 +92,4 @@ const del = (req: Request, res: Response, next: NextFunction): void => {
   }
 };
 
-export { list, create, getById, get, updatePartial, update, del };
+export default { getById, list, create, get, updatePartial, update, del };

@@ -13,21 +13,21 @@ module.exports = class extends Generator {
     const prompts = [
       {
         type: 'input',
-        name: 'elementComponentName',
+        name: 'compName',
         message: 'Name of the new component (singular)?',
         default: 'thing',
       },
     ];
 
     return this.prompt(prompts).then((props) => {
-      const elementCompNameParamCase = changeCase.paramCase(
-        props.elementComponentName,
-      );
+      const compNameParamCase = changeCase.paramCase(props.compName);
+      const compNamePascalCase = changeCase.pascalCase(props.compName);
 
       this.props = {
         ...props,
-        elementCompNameSingular: elementCompNameParamCase,
-        elementCompNamePlural: pluralize(elementCompNameParamCase),
+        compNameParamCase,
+        compNamePascalCase,
+        compNameParamCasePlural: pluralize(compNameParamCase),
       };
     });
   }
