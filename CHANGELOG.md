@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/boringcodes/create-service-component/compare/v1.4.0...v1.5.0) (2021-02-12)
+
+### Features
+
+- **generators:** create new app :with-mongo ([c3d7697](https://github.com/boringcodes/create-service-component/commit/c3d7697d02fa7777747a8c91c15fd1f95e591500))
+- **generators/app:** refactor template & add types.ts that contains entity type def ([cbb30cf](https://github.com/boringcodes/create-service-component/commit/cbb30cf87a1c5e8d6ed0bda8ec5853ed0aec7417))
+
 ## [1.4.0](https://github.com/boringcodes/create-service-component/compare/v1.3.1...v1.4.0) (2021-02-10)
 
 ### Features
