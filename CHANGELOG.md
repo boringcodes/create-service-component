@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/boringcodes/create-service-component/compare/v1.5.0...v1.6.0) (2021-02-13)
+
+### Features
+
+- **generators:** create new app with-postgres ([bad9a93](https://github.com/boringcodes/create-service-component/commit/bad9a933b9839736f021ca5f25bdedf43e0ec0c9))
+- **generators/with-mongo:** refactor type def in types, controller & repository ([7204334](https://github.com/boringcodes/create-service-component/commit/720433444c0e09d4220656d1b6f614e466f54621))
+
 ## [1.5.0](https://github.com/boringcodes/create-service-component/compare/v1.4.0...v1.5.0) (2021-02-12)
 
 ### Features
