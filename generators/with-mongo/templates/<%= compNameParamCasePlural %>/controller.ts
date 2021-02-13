@@ -7,7 +7,7 @@ import { ENTITY } from './constants';
 import repository from './repository';
 
 interface MyRequest extends Request {
-  readonly [ENTITY]: Required<<%= compNamePascalCase %>>;
+  readonly [ENTITY]: <%= compNamePascalCase %>;
 }
 
 const getById = async (

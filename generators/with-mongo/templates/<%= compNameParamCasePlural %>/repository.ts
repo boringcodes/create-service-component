@@ -28,7 +28,7 @@ const get = async (id: string): Promise<<%= compNamePascalCase %>> => {
   return transform(document);
 };
 
-const updatePartial = async (id: string, object: <%= compNamePascalCase %>): Promise<<%= compNamePascalCase %>> => {
+const updatePartial = async (id: string, object: Omit<<%= compNamePascalCase %>, 'id'>): Promise<<%= compNamePascalCase %>> => {
   // get document
   const document = await Model.findById(id).exec();
   if (document === null) {
@@ -42,7 +42,7 @@ const updatePartial = async (id: string, object: <%= compNamePascalCase %>): Pro
   return transform(document);
 };
 
-const update = async (id: string, object: <%= compNamePascalCase %>): Promise<<%= compNamePascalCase %>> => {
+const update = async (id: string, object: Omit<<%= compNamePascalCase %>, 'id'>): Promise<<%= compNamePascalCase %>> => {
   // get document
   const document = await Model.findById(id).exec();
   if (document === null) {
@@ -64,19 +64,18 @@ const del = async (id: string): Promise<<%= compNamePascalCase %>> => {
   }
 
   // delete document
-  await Model.deleteOne({ _id: id }).exec();
+  await document.remove();
 
   return transform(document);
 };
 
 // transform document to json object
 const transform = (document: Document): <%= compNamePascalCase %> => {
-  const { _id, ...restObject } = document.toObject({
-    virtuals: true,
+  const { _id: id, ...restObject } = document.toObject({
     versionKey: false,
   });
 
-  return restObject;
+  return { ...restObject, id };
 };
 
 export default { list, create, get, updatePartial, update, del };
