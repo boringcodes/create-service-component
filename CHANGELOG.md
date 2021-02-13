@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/boringcodes/create-service-component/compare/v1.6.0...v1.7.0) (2021-02-13)
+
+### Features
+
+- **generators:** create new app :with-postgres-typeorm ([391f4b3](https://github.com/boringcodes/create-service-component/commit/391f4b310be9caeee5d3961d2d34e32dca2771ce))
+- **generators:** rename updatePartial to update & remove PUT update ([26e8d0d](https://github.com/boringcodes/create-service-component/commit/26e8d0d4a125a754471e0b95a863f8afabab6a7f))
+
 ## [1.6.0](https://github.com/boringcodes/create-service-component/compare/v1.5.0...v1.6.0) (2021-02-13)
 
 ### Features
