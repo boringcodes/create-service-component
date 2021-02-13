@@ -28,23 +28,6 @@ const get = async (id: number): Promise<<%= compNamePascalCase %>> => {
   return transform(instance);
 };
 
-const updatePartial = async (
-  id: number,
-  object: Omit<<%= compNamePascalCase %>, 'id'>,
-): Promise<<%= compNamePascalCase %>> => {
-  // get instance
-  const instance = await Model.findByPk(id);
-  if (instance === null) {
-    throw new MyError('Instance not found');
-  }
-
-  // update partial instance
-  instance.set(object);
-  await instance.save();
-
-  return transform(instance);
-};
-
 const update = async (
   id: number,
   object: Omit<<%= compNamePascalCase %>, 'id'>,
@@ -56,7 +39,7 @@ const update = async (
   }
 
   // update instance
-  instance.set({ id, ...object }, { reset: true });
+  instance.set(object);
   await instance.save();
 
   return transform(instance);
@@ -80,4 +63,4 @@ const transform = (instance: Instance): <%= compNamePascalCase %> => {
   return instance.toJSON() as <%= compNamePascalCase %>;
 };
 
-export default { list, create, get, updatePartial, update, del };
+export default { list, create, get, update, del };

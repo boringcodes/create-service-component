@@ -28,20 +28,6 @@ const get = async (id: string): Promise<<%= compNamePascalCase %>> => {
   return transform(document);
 };
 
-const updatePartial = async (id: string, object: Omit<<%= compNamePascalCase %>, 'id'>): Promise<<%= compNamePascalCase %>> => {
-  // get document
-  const document = await Model.findById(id).exec();
-  if (document === null) {
-    throw new MyError('Document not found');
-  }
-
-  // update partial document
-  document.set(object);
-  await document.save();
-
-  return transform(document);
-};
-
 const update = async (id: string, object: Omit<<%= compNamePascalCase %>, 'id'>): Promise<<%= compNamePascalCase %>> => {
   // get document
   const document = await Model.findById(id).exec();
@@ -50,7 +36,7 @@ const update = async (id: string, object: Omit<<%= compNamePascalCase %>, 'id'>)
   }
 
   // update document
-  document.overwrite(object);
+  document.set(object);
   await document.save();
 
   return transform(document);
@@ -78,4 +64,4 @@ const transform = (document: Document): <%= compNamePascalCase %> => {
   return { ...restObject, id };
 };
 
-export default { list, create, get, updatePartial, update, del };
+export default { list, create, get, update, del };

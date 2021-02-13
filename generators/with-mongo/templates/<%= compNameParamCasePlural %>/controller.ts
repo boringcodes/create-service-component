@@ -76,25 +76,6 @@ const get = (req: Request, res: Response, next: NextFunction): void => {
   }
 };
 
-const updatePartial = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-): Promise<void> => {
-  try {
-    console.log((req as MyRequest)[ENTITY]);
-    // update partial object
-    const object = await repository.updatePartial(
-      (req as MyRequest)[ENTITY].id,
-      req.body,
-    );
-
-    res.send(object);
-  } catch (err) {
-    next(new HttpError(err.code ?? StatusCodes.INTERNAL_SERVER_ERROR, err));
-  }
-};
-
 const update = async (
   req: Request,
   res: Response,
@@ -128,4 +109,4 @@ const del = async (
   }
 };
 
-export default { getById, list, create, get, updatePartial, update, del };
+export default { getById, list, create, get, update, del };

@@ -16,8 +16,7 @@ const routes = (_: RouteOptions): Router => {
   router
     .route('/:id')
     .get(controller.get)
-    .patch(controller.updatePartial)
-    .put(controller.update)
+    .patch(controller.update)
     .delete(controller.del);
 
   return router;

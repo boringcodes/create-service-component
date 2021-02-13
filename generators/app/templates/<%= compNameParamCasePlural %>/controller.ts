@@ -57,25 +57,14 @@ const get = (req: Request, res: Response, next: NextFunction): void => {
   }
 };
 
-const updatePartial = (
+const update = (
   req: Request,
   res: Response,
   next: NextFunction,
 ): void => {
   try {
-    // TODO: update partial object
-    const object = { ...(req as MyRequest)[ENTITY], ...req.body };
-
-    res.send(object);
-  } catch (err) {
-    next(new HttpError(err.code ?? StatusCodes.INTERNAL_SERVER_ERROR, err));
-  }
-};
-
-const update = (req: Request, res: Response, next: NextFunction): void => {
-  try {
     // TODO: update object
-    const object = { ...req.body };
+    const object = { ...(req as MyRequest)[ENTITY], ...req.body };
 
     res.send(object);
   } catch (err) {
@@ -92,4 +81,4 @@ const del = (req: Request, res: Response, next: NextFunction): void => {
   }
 };
 
-export default { getById, list, create, get, updatePartial, update, del };
+export default { getById, list, create, get, update, del };
