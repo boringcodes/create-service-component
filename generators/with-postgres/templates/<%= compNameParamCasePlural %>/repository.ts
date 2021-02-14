@@ -1,66 +1,73 @@
+import { ModelCtor } from 'sequelize';
 import { MyError } from '@boringcodes/utils/error';
 
 import { <%= compNamePascalCase %> } from './types';
-import Model, { Instance } from './model';
+import model, { Model } from './model';
+import postgres from '../../db/postgres';
+
+// get model
+const getModel = (): ModelCtor<Model> => {
+  return postgres.getModel<Model>(model);
+};
 
 const list = async (): Promise<<%= compNamePascalCase %>[]> => {
-  // list instances
-  const instances = await Model.findAll();
+  // list documents
+  const documents = await getModel().findAll();
 
-  return instances.map(transform);
+  return documents.map(transform);
 };
 
 const create = async (object: Omit<<%= compNamePascalCase %>, 'id'>): Promise<<%= compNamePascalCase %>> => {
-  // create instance
-  const instance = Model.build(object);
-  await instance.save();
+  // create document
+  const document = getModel().build(object);
+  await document.save();
 
-  return transform(instance);
+  return transform(document);
 };
 
 const get = async (id: number): Promise<<%= compNamePascalCase %>> => {
-  // get instance
-  const instance = await Model.findByPk(id);
-  if (instance === null) {
-    throw new MyError('Instance not found');
+  // get document
+  const document = await getModel().findByPk(id);
+  if (document === null) {
+    throw new MyError('Document not found');
   }
 
-  return transform(instance);
+  return transform(document);
 };
 
 const update = async (
   id: number,
   object: Omit<<%= compNamePascalCase %>, 'id'>,
 ): Promise<<%= compNamePascalCase %>> => {
-  // get instance
-  const instance = await Model.findByPk(id);
-  if (instance === null) {
-    throw new MyError('Instance not found');
+  // get document
+  const document = await getModel().findByPk(id);
+  if (document === null) {
+    throw new MyError('Document not found');
   }
 
-  // update instance
-  instance.set(object);
-  await instance.save();
+  // update document
+  document.set(object);
+  await document.save();
 
-  return transform(instance);
+  return transform(document);
 };
 
 const del = async (id: number): Promise<<%= compNamePascalCase %>> => {
-  // get instance
-  const instance = await Model.findByPk(id);
-  if (instance === null) {
-    throw new MyError('Instance not found');
+  // get document
+  const document = await getModel().findByPk(id);
+  if (document === null) {
+    throw new MyError('Document not found');
   }
 
-  // delete instance
-  await instance.destroy();
+  // delete document
+  await document.destroy();
 
-  return transform(instance);
+  return transform(document);
 };
 
-// transform instance to <%= compNamePascalCase %>
-const transform = (instance: Instance): <%= compNamePascalCase %> => {
-  return instance.toJSON() as <%= compNamePascalCase %>;
+// transform document to <%= compNamePascalCase %>
+const transform = (document: Model): <%= compNamePascalCase %> => {
+  return document.toJSON() as <%= compNamePascalCase %>;
 };
 
 export default { list, create, get, update, del };

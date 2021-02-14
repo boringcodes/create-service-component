@@ -15,3 +15,4 @@ class Schema implements <%= compNamePascalCase %> {
 }
 
 export default Schema;
+export { Schema };

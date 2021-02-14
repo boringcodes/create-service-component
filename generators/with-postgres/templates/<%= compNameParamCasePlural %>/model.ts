@@ -1,13 +1,18 @@
-import { Model as SequelizeModel, ModelCtor, DataTypes } from 'sequelize';
+import {
+  Model as SequelizeModel,
+  ModelAttributes,
+  ModelOptions,
+  DataTypes,
+} from 'sequelize';
 
-import postgres from '../../db/postgres';
 import { <%= compNamePascalCase %> } from './types';
 import { ENTITY } from './constants';
 
-interface Instance extends SequelizeModel<<%= compNamePascalCase %>, Omit<<%= compNamePascalCase %>, 'id'>>, <%= compNamePascalCase %> {}
-interface Model extends ModelCtor<Instance> {}
+interface Model extends SequelizeModel<<%= compNamePascalCase %>, Omit<<%= compNamePascalCase %>, 'id'>>, <%= compNamePascalCase %> {}
 
-const schema = {
+const name = ENTITY;
+
+const attributes: ModelAttributes<Model> = {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -17,7 +22,7 @@ const schema = {
   // TODO: add more fields
 };
 
-export default postgres.createModel<Instance, Model>(ENTITY, schema, {
-  timestamps: false,
-});
-export { Instance, Model };
+const options: ModelOptions<SequelizeModel> = {};
+
+export default { name, attributes, options };
+export { Model };
