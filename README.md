@@ -66,6 +66,9 @@ $ yo create-service-component:with-postgres
 
 # or :with-postgres-typeorm
 $ yo create-service-component:with-postgres-typeorm
+
+# or :with-postgres-prisma
+$ yo create-service-component:with-postgres-prisma
 ```
 
 This scaffolds out:
@@ -77,8 +80,8 @@ This scaffolds out:
 │   │   │   ├── constants.ts
 │   │   │   ├── controller.ts
 │   │   │   ├── index.ts
-│   │   │   ├── model.ts        (:with-mongo, :with-postgres or :with-postgres-typeorm)
-│   │   │   ├── repository.ts   (:with-mongo, :with-postgres or :with-postgres-typeorm)
+│   │   │   ├── model.ts        (:with-mongo/:with-postgres/:with-postgres-typeorm)
+│   │   │   ├── repository.ts   (:with-mongo/:with-postgres/:with-postgres-typeorm/:with-postgres-prisma)
 │   │   │   ├── types.ts
 │   │   └── ...
 │   ├── ...
