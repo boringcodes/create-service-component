@@ -58,7 +58,7 @@ const del = async (id: number): Promise<<%= compNamePascalCase %>> => {
   return transform(instance);
 };
 
-// transform instance to json object
+// transform instance to <%= compNamePascalCase %>
 const transform = (instance: Instance): <%= compNamePascalCase %> => {
   return instance.toJSON() as <%= compNamePascalCase %>;
 };

@@ -13,7 +13,7 @@ interface Model extends MongooseModel<Document> {}
 
 const schema = new Schema<Document>({
   name: String,
-  // TODO: add more fields here
+  // TODO: add more fields
 });
 
 export default mongo.createModel<Document, Model>(ENTITY, schema);

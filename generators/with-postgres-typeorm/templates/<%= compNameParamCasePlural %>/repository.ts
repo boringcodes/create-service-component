@@ -23,7 +23,7 @@ const get = async (id: number): Promise<<%= compNamePascalCase %>> => {
   // get document
   const document = await getRepository(Model).findOne(id);
   if (document === undefined) {
-    throw new MyError('Row not found');
+    throw new MyError('Document not found');
   }
 
   return transform(document);
@@ -36,7 +36,7 @@ const update = async (
   // get document
   const document = await getRepository(Model).findOne(id);
   if (document === undefined) {
-    throw new MyError('Row not found');
+    throw new MyError('Document not found');
   }
 
   // update document
@@ -50,7 +50,7 @@ const del = async (id: number): Promise<<%= compNamePascalCase %>> => {
   // get document
   const document = await getRepository(Model).findOne(id);
   if (document === undefined) {
-    throw new MyError('Row not found');
+    throw new MyError('Document not found');
   }
 
   // delete document

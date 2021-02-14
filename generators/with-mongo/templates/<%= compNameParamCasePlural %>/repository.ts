@@ -55,7 +55,7 @@ const del = async (id: string): Promise<<%= compNamePascalCase %>> => {
   return transform(document);
 };
 
-// transform document to json object
+// transform document to <%= compNamePascalCase %>
 const transform = (document: Document): <%= compNamePascalCase %> => {
   const { _id: id, ...restObject } = document.toObject({
     versionKey: false,

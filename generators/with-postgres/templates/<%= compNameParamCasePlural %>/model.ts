@@ -14,7 +14,7 @@ const schema = {
     autoIncrement: true,
   },
   name: DataTypes.STRING,
-  // TODO: add more fields here
+  // TODO: add more fields
 };
 
 export default postgres.createModel<Instance, Model>(ENTITY, schema, {
