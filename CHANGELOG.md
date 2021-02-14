@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/boringcodes/create-service-component/compare/v1.7.0...v1.8.0) (2021-02-14)
+
+### Features
+
+- **generators/with-mongo/templates:** change implementation of model creattion, get model from mongoose in repository for usage ([2a363d3](https://github.com/boringcodes/create-service-component/commit/2a363d3db1f25467ee8b98b328a3644f545495c4))
+- **generators/with-postgres/templates:** change implementation of repository & model ([71bdf36](https://github.com/boringcodes/create-service-component/commit/71bdf3627d916c1e8d0c35af57db300d6b8af00e))
+- **generators/with-postgres/templates:** refactor repository & model ([d7b33ee](https://github.com/boringcodes/create-service-component/commit/d7b33ee13e083d614fde50bddcc3c238010cc6c0))
+
 ## [1.7.0](https://github.com/boringcodes/create-service-component/compare/v1.6.0...v1.7.0) (2021-02-13)
 
 ### Features
