@@ -2,17 +2,19 @@ import {
   Model as SequelizeModel,
   ModelAttributes,
   ModelOptions,
+  ModelCtor,
   DataTypes,
 } from 'sequelize';
 
 import { <%= compNamePascalCase %> } from './types';
 import { ENTITY } from './constants';
 
-interface Model extends SequelizeModel<<%= compNamePascalCase %>, Omit<<%= compNamePascalCase %>, 'id'>>, <%= compNamePascalCase %> {}
+interface Instance extends SequelizeModel<<%= compNamePascalCase %>, Omit<<%= compNamePascalCase %>, 'id'>>, <%= compNamePascalCase %> {}
+interface Model extends ModelCtor<Instance> {}
 
 const name = ENTITY;
 
-const attributes: ModelAttributes<Model> = {
+const schema: ModelAttributes<Instance> = {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -24,5 +26,5 @@ const attributes: ModelAttributes<Model> = {
 
 const options: ModelOptions<SequelizeModel> = {};
 
-export default { name, attributes, options };
-export { Model };
+export default { name, schema, options };
+export { Instance, Model };

@@ -1,73 +1,72 @@
-import { ModelCtor } from 'sequelize';
 import { MyError } from '@boringcodes/utils/error';
 
-import { <%= compNamePascalCase %> } from './types';
-import model, { Model } from './model';
 import postgres from '../../db/postgres';
-
-// get model
-const getModel = (): ModelCtor<Model> => {
-  return postgres.getModel<Model>(model);
-};
+import { <%= compNamePascalCase %> } from './types';
+import model, { Instance, Model } from './model';
 
 const list = async (): Promise<<%= compNamePascalCase %>[]> => {
-  // list documents
-  const documents = await getModel().findAll();
+  // list instances
+  const instances = await getModel().findAll();
 
-  return documents.map(transform);
+  return instances.map(transform);
 };
 
 const create = async (object: Omit<<%= compNamePascalCase %>, 'id'>): Promise<<%= compNamePascalCase %>> => {
-  // create document
-  const document = getModel().build(object);
-  await document.save();
+  // create instance
+  const instance = getModel().build(object);
+  await instance.save();
 
-  return transform(document);
+  return transform(instance);
 };
 
 const get = async (id: number): Promise<<%= compNamePascalCase %>> => {
-  // get document
-  const document = await getModel().findByPk(id);
-  if (document === null) {
-    throw new MyError('Document not found');
+  // get instance
+  const instance = await getModel().findByPk(id);
+  if (instance === null) {
+    throw new MyError('Instance not found');
   }
 
-  return transform(document);
+  return transform(instance);
 };
 
 const update = async (
   id: number,
   object: Omit<<%= compNamePascalCase %>, 'id'>,
 ): Promise<<%= compNamePascalCase %>> => {
-  // get document
-  const document = await getModel().findByPk(id);
-  if (document === null) {
-    throw new MyError('Document not found');
+  // get instance
+  const instance = await getModel().findByPk(id);
+  if (instance === null) {
+    throw new MyError('Instance not found');
   }
 
-  // update document
-  document.set(object);
-  await document.save();
+  // update instance
+  instance.set(object);
+  await instance.save();
 
-  return transform(document);
+  return transform(instance);
 };
 
 const del = async (id: number): Promise<<%= compNamePascalCase %>> => {
-  // get document
-  const document = await getModel().findByPk(id);
-  if (document === null) {
-    throw new MyError('Document not found');
+  // get instance
+  const instance = await getModel().findByPk(id);
+  if (instance === null) {
+    throw new MyError('Instance not found');
   }
 
-  // delete document
-  await document.destroy();
+  // delete instance
+  await instance.destroy();
 
-  return transform(document);
+  return transform(instance);
 };
 
-// transform document to <%= compNamePascalCase %>
-const transform = (document: Model): <%= compNamePascalCase %> => {
-  return document.toJSON() as <%= compNamePascalCase %>;
+// get model
+const getModel = (): Model => {
+  return postgres.getModel(model.name) as Model;
+};
+
+// transform instance to <%= compNamePascalCase %>
+const transform = (instance: Instance): <%= compNamePascalCase %> => {
+  return instance.toJSON() as <%= compNamePascalCase %>;
 };
 
 export default { list, create, get, update, del };
