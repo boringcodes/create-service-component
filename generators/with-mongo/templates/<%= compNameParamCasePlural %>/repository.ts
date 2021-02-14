@@ -1,26 +1,26 @@
+import mongoose from 'mongoose';
 import { MyError } from '@boringcodes/utils/error';
 
 import { <%= compNamePascalCase %> } from './types';
-import Model, { Document } from './model';
+import model, { Document, Model } from './model';
 
 const list = async (): Promise<<%= compNamePascalCase %>[]> => {
   // list documents
-  const documents = await Model.find();
+  const documents = await getModel().find();
 
   return documents.map(transform);
 };
 
 const create = async (object: Omit<<%= compNamePascalCase %>, 'id'>): Promise<<%= compNamePascalCase %>> => {
   // create document
-  const document = new Model(object);
-  await document.save();
+  const document = await getModel().create(object);
 
   return transform(document);
 };
 
 const get = async (id: string): Promise<<%= compNamePascalCase %>> => {
   // get document
-  const document = await Model.findById(id).exec();
+  const document = await getModel().findById(id).exec();
   if (document === null) {
     throw new MyError('Document not found');
   }
@@ -28,9 +28,12 @@ const get = async (id: string): Promise<<%= compNamePascalCase %>> => {
   return transform(document);
 };
 
-const update = async (id: string, object: Omit<<%= compNamePascalCase %>, 'id'>): Promise<<%= compNamePascalCase %>> => {
+const update = async (
+  id: string,
+  object: Omit<<%= compNamePascalCase %>, 'id'>,
+): Promise<<%= compNamePascalCase %>> => {
   // get document
-  const document = await Model.findById(id).exec();
+  const document = await getModel().findById(id).exec();
   if (document === null) {
     throw new MyError('Document not found');
   }
@@ -44,7 +47,7 @@ const update = async (id: string, object: Omit<<%= compNamePascalCase %>, 'id'>)
 
 const del = async (id: string): Promise<<%= compNamePascalCase %>> => {
   // get document
-  const document = await Model.findById(id).exec();
+  const document = await getModel().findById(id).exec();
   if (document === null) {
     throw new MyError('Document not found');
   }
@@ -53,6 +56,11 @@ const del = async (id: string): Promise<<%= compNamePascalCase %>> => {
   await document.remove();
 
   return transform(document);
+};
+
+// get model
+const getModel = (): Model => {
+  return mongoose.models[model.name];
 };
 
 // transform document to <%= compNamePascalCase %>
