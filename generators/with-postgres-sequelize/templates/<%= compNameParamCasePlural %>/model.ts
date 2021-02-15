@@ -5,16 +5,17 @@ import {
   ModelCtor,
   DataTypes,
 } from 'sequelize';
+import pluralize from 'pluralize';
 
 import { <%= compNamePascalCase %> } from './types';
 import { ENTITY } from './constants';
 
-interface Instance extends SequelizeModel<<%= compNamePascalCase %>, Omit<<%= compNamePascalCase %>, 'id'>>, <%= compNamePascalCase %> {}
-interface Model extends ModelCtor<Instance> {}
+interface Document extends SequelizeModel<<%= compNamePascalCase %>, Omit<<%= compNamePascalCase %>, 'id'>>, <%= compNamePascalCase %> {}
+interface Model extends ModelCtor<Document> {}
 
-const name = ENTITY;
+const name = pluralize(ENTITY);
 
-const schema: ModelAttributes<Instance> = {
+const schema: ModelAttributes<Document> = {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -24,7 +25,9 @@ const schema: ModelAttributes<Instance> = {
   // TODO: add more fields
 };
 
-const options: ModelOptions<SequelizeModel> = {};
+const options: ModelOptions<SequelizeModel> = {
+  timestamps: false,
+};
 
 export default { name, schema, options };
-export { Instance, Model };
+export { Document, Model };
