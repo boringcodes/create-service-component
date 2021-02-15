@@ -25,10 +25,7 @@ const get = async (id: number): Promise<<%= compNamePascalCase %>> => {
   return document;
 };
 
-const update = async (
-  id: number,
-  data: Omit<<%= compNamePascalCase %>, 'id'>,
-): Promise<<%= compNamePascalCase %>> => {
+const update = async (id: number, data: Omit<<%= compNamePascalCase %>, 'id'>): Promise<<%= compNamePascalCase %>> => {
   // get document
   const document = await getRepository(Model).findOne(id);
   if (document === undefined) {

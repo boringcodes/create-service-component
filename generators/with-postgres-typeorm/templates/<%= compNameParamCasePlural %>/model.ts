@@ -1,9 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import pluralize from 'pluralize';
 
 import { <%= compNamePascalCase %> } from './types';
 import { ENTITY } from './constants';
 
-@Entity(ENTITY)
+@Entity(pluralize(ENTITY))
 class Model implements <%= compNamePascalCase %> {
   @PrimaryGeneratedColumn()
   id!: number;

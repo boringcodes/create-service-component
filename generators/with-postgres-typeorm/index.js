@@ -22,12 +22,21 @@ module.exports = class extends Generator {
     return this.prompt(prompts).then((props) => {
       const compNameParamCase = changeCase.paramCase(props.compName);
       const compNamePascalCase = changeCase.pascalCase(props.compName);
+      const compNameCamelCase = changeCase.camelCase(props.compName);
 
       this.props = {
-        ...props,
+        // param-case
         compNameParamCase,
-        compNamePascalCase,
+        // param-cases
         compNameParamCasePlural: pluralize(compNameParamCase),
+        // PascalCase
+        compNamePascalCase,
+        // PasCalCases
+        compNamePascalCasePlural: pluralize(compNamePascalCase),
+        // camelCase
+        compNameCamelCase,
+        // camelCases
+        compNameCamelCasePlural: pluralize(compNameCamelCase),
       };
     });
   }
