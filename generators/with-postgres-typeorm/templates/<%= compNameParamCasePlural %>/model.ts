@@ -4,7 +4,7 @@ import { <%= compNamePascalCase %> } from './types';
 import { ENTITY } from './constants';
 
 @Entity(ENTITY)
-class Schema implements <%= compNamePascalCase %> {
+class Model implements <%= compNamePascalCase %> {
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -14,5 +14,4 @@ class Schema implements <%= compNamePascalCase %> {
   // TODO: add more fields
 }
 
-export default Schema;
-export { Schema };
+export default Model;
