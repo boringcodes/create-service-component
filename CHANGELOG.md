@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/boringcodes/create-service-component/compare/v1.8.0...v1.9.0) (2021-02-15)
+
+### Features
+
+- **generators:** create new app :with-postgres-prisma ([87952b8](https://github.com/boringcodes/create-service-component/commit/87952b820477d1b1ab14824cab1a68203d17b9ee))
+- **generators/with-mongo:** pluralize RESOURCE const & model name ([13d017e](https://github.com/boringcodes/create-service-component/commit/13d017e5ce70e1d07b55024be987ad5e90d14591))
+- **generators/with-postgres:** rename app to with-postgres-sequelize, pluralize model name & RESOURCE const ([2cd0c11](https://github.com/boringcodes/create-service-component/commit/2cd0c11a8d37840840c7769e8f909e43f5aadf03))
+- **generators/with-postgres-prisma:** add pluralize module, pluralize RESOURCE const instead of hardcoded ([65f3224](https://github.com/boringcodes/create-service-component/commit/65f3224bdf01e30784c46be913418041d4e05322))
+- **generators/with-postgres-typeorm:** add pluralize module, pluralize model name ([ff389c5](https://github.com/boringcodes/create-service-component/commit/ff389c567da9bb259d38a7099bcae7dd5b6b63a4))
+- **generators/with-postgres-typeorm:** set comp interface name prop optional ([fe87de7](https://github.com/boringcodes/create-service-component/commit/fe87de7999327ffdcea9b303e4982b784e19cac7))
+
 ## [1.8.0](https://github.com/boringcodes/create-service-component/compare/v1.7.0...v1.8.0) (2021-02-14)
 
 ### Features
