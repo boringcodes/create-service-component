@@ -3,6 +3,7 @@ import {
   Document as MongooseDocument,
   Model as MongooseModel,
 } from 'mongoose';
+import pluralize from 'pluralize';
 
 import { <%= compNamePascalCase %> } from './types';
 import { ENTITY } from './constants';
@@ -10,7 +11,7 @@ import { ENTITY } from './constants';
 interface Document extends MongooseDocument, Omit<<%= compNamePascalCase %>, 'id'> {}
 interface Model extends MongooseModel<Document> {}
 
-const name = ENTITY;
+const name = pluralize(ENTITY);
 
 const schema = new Schema<Document>({
   name: String,
