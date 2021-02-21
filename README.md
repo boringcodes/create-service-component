@@ -34,7 +34,9 @@
 
 ## Features
 
-- [x] Generate full CRUD component (list, create, get, updatePartial, update & delete)
+Generated component includes the following features:
+
+- [x] Generate full CRUD component (list, create, get, update & delete)
 - [ ] Auto register the new created component to express routes
 
 ## Install
